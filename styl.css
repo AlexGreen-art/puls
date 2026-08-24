@@ -155,7 +155,8 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.01
 .ph.brak img{display:none}
 .para{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4.5vw,56px);align-items:start}
 .para .ph{aspect-ratio:3/2}
-.ph-pion{aspect-ratio:4/5}
+.para .ph-pion,.ph-pion{aspect-ratio:4/5}
+.ph-pion img{object-position:top}
 .podpis{font-size:.83rem;color:var(--atrament-jasny);margin-top:10px}
 .trojka{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,32px)}
 .trojka .ph{aspect-ratio:3/2}
