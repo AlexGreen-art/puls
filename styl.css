@@ -1,0 +1,206 @@
+/* Puls — przychodnia weterynaryjna. Strona odpowiada na strach o 22:00. */
+
+:root{
+  --biel:#f7f9f8;
+  --biel-cien:#e9efec;
+  --atrament:#16211c;
+  --atrament-jasny:#57665f;
+  --zielen:#1c5c3f;
+  --zielen-jasna:#2f8159;
+  --alarm:#a83a1c;
+  --alarm-tlo:#fdf3ef;
+  --linia:#d4dfd9;
+  --linia-ciemna:#26332c;
+
+  --display:"Zilla Slab",Georgia,serif;
+  --tekst:"Libre Franklin",system-ui,-apple-system,sans-serif;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--biel);color:var(--atrament);
+  font-family:var(--tekst);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.015em}
+:focus-visible{outline:3px solid var(--zielen);outline-offset:3px}
+[id]{scroll-margin-top:115px}
+
+.owijka{width:min(1160px,100% - 44px);margin-inline:auto}
+.waska{width:min(1160px,100% - 44px);margin-inline:auto}
+.waska > *{max-width:760px}
+
+/* ---------- pasek ---------- */
+.pasek{position:sticky;top:0;z-index:30;background:var(--biel);
+  border-bottom:1px solid var(--linia)}
+.pasek-rzad{display:flex;align-items:center;gap:22px;height:66px}
+.znak{font-family:var(--display);font-weight:700;font-size:1.34rem;letter-spacing:-.01em;
+  text-decoration:none;line-height:1;color:var(--zielen)}
+.znak em{display:block;font:400 .6rem/1 var(--tekst);font-style:normal;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--atrament-jasny);margin-top:6px}
+.nav-desktop{margin-left:auto;display:flex;gap:17px;font-size:.88rem}
+.menu-tel{display:none}
+.nav-desktop a{text-decoration:none;color:var(--atrament-jasny)}
+.nav-desktop a:hover{color:var(--zielen)}
+.tel{background:var(--zielen);color:#fff;text-decoration:none;font-weight:600;
+  padding:10px 17px;font-size:.9rem;white-space:nowrap;border-radius:2px}
+.tel:hover{background:#164b33}
+
+/* ---------- pasek stanu, sterowany zegarem ---------- */
+.stan{background:var(--zielen);color:#eaf3ee;border-bottom:1px solid var(--linia)}
+.stan.zamkniete{background:var(--atrament)}
+.stan-rzad{display:flex;align-items:baseline;gap:8px 26px;flex-wrap:wrap;padding:13px 0}
+.stan-glowny{margin:0;font-weight:600;font-size:.98rem}
+.stan-glowny b{font-family:var(--display);font-weight:700}
+.stan-drugi{margin:0;font-size:.92rem;color:#b9cfc4}
+.stan.zamkniete .stan-drugi{color:#93a49b}
+.stan a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45)}
+.kropka{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7ede9f;
+  margin-right:9px;vertical-align:middle}
+.stan.zamkniete .kropka{background:#d98c6a}
+
+/* ---------- bloki ---------- */
+.blok{padding:clamp(52px,6.5vw,88px) 0}
+.blok-hero{padding:clamp(50px,6vw,86px) 0 clamp(44px,5vw,70px)}
+.blok-cien{background:var(--biel-cien)}
+.blok-ciemny{background:var(--atrament);color:var(--biel)}
+.blok-alarm{background:var(--alarm-tlo);border-block:1px solid #f0d8ce}
+.nadpis{font:600 .67rem/1 var(--tekst);letter-spacing:.21em;text-transform:uppercase;
+  color:var(--zielen);margin:0 0 15px}
+.blok-ciemny .nadpis{color:var(--zielen-jasna)}
+.blok-alarm .nadpis{color:var(--alarm)}
+.tytul{font-size:clamp(1.55rem,3.1vw,2.35rem);line-height:1.15;max-width:26ch;text-wrap:balance}
+.wstep{color:var(--atrament-jasny);max-width:64ch;margin-top:14px}
+.blok-ciemny .wstep{color:#9fb0a7}
+
+/* ---------- hero ---------- */
+.blok-hero h1{font-size:clamp(1.8rem,3.5vw,2.75rem);line-height:1.14;max-width:27ch;
+  text-wrap:balance}
+.lead{color:var(--atrament-jasny);max-width:58ch;margin:22px 0 0;font-size:1.06rem}
+.przyciski{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:13px 22px;
+  font-size:.95rem;border-radius:2px}
+.btn-glowny{background:var(--alarm);color:#fff}
+.btn-glowny:hover{background:#8e3018}
+.btn-obrys{border:1.5px solid var(--linia);color:var(--atrament)}
+.btn-obrys:hover{background:var(--biel-cien)}
+
+.pas-foto{margin:0}
+.pas-foto .ph{aspect-ratio:32/11}
+
+/* ---------- lista pilnych objawów ---------- */
+.lista-pilne{list-style:none;padding:0;margin:28px 0 0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,52px)}
+.lista-pilne li{position:relative;padding:13px 0 13px 30px;border-bottom:1px solid #f0d8ce;
+  font-size:1rem}
+.lista-pilne li:before{content:"";position:absolute;left:0;top:1.35em;width:14px;height:2px;
+  background:var(--alarm)}
+.dopisek-alarm{margin-top:26px;font-weight:600;color:var(--alarm);max-width:60ch}
+
+/* ---------- listy ---------- */
+.lista{list-style:none;padding:0;margin:24px 0 0}
+.lista li{position:relative;padding-left:24px;margin-bottom:10px;color:var(--atrament-jasny);
+  font-size:.97rem}
+.lista li:before{content:"";position:absolute;left:0;top:.7em;width:11px;height:2px;
+  background:var(--zielen)}
+.lista-nie li{color:#9fb0a7;margin-bottom:16px;max-width:72ch}
+.lista-nie li:before{background:var(--zielen-jasna)}
+
+/* ---------- karty diagnostyki ---------- */
+.karty{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px}
+.karta{background:var(--biel);border:1px solid var(--linia);display:flex;
+  flex-direction:column;border-radius:2px;overflow:hidden}
+.blok-cien .karta{background:#fff}
+.karta .ph{aspect-ratio:4/3}
+.karta-tresc{padding:18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.karta h3{font-size:1.14rem;font-weight:700}
+.karta p{margin:0;color:var(--atrament-jasny);font-size:.93rem}
+.karta-tresc > p:not(.stopka){min-height:5.6em}
+.karta .stopka{margin-top:auto;padding-top:13px;border-top:1px solid var(--linia);
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.karta .stopka b{font-family:var(--display);font-size:1.14rem;color:var(--atrament)}
+.karta .stopka span{font-size:.79rem;color:var(--atrament-jasny)}
+
+/* ---------- licznik rachunku ---------- */
+.licznik{margin-top:30px;border-top:1px solid var(--linia)}
+.pozycja{appearance:none;cursor:pointer;width:100%;text-align:left;background:none;
+  border:0;border-bottom:1px solid var(--linia);padding:15px 0 15px 38px;position:relative;
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  font-family:var(--tekst);color:var(--atrament)}
+.pozycja:before{content:"";position:absolute;left:0;top:17px;width:20px;height:20px;
+  border:2px solid var(--linia);border-radius:2px;background:#fff}
+.pozycja[aria-pressed="true"]:before{background:var(--zielen);border-color:var(--zielen)}
+.pozycja:after{content:"";position:absolute;left:6px;top:23px;width:8px;height:4px;
+  border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);opacity:0}
+.pozycja[aria-pressed="true"]:after{opacity:1}
+.pozycja:hover:before{border-color:var(--zielen-jasna)}
+.poz-nazwa{font-size:1rem;font-weight:600}
+.poz-nazwa small{display:block;margin-top:3px;font-weight:400;font-size:.85rem;
+  color:var(--atrament-jasny);line-height:1.45}
+.poz-cena{font-family:var(--display);font-weight:700;white-space:nowrap;
+  color:var(--atrament-jasny)}
+.pozycja[aria-pressed="true"] .poz-cena{color:var(--atrament)}
+.suma{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  margin-top:22px;padding-top:18px;border-top:2px solid var(--atrament)}
+.suma span{font:600 .68rem/1 var(--tekst);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--atrament-jasny)}
+.suma b{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3vw,2.1rem)}
+
+/* ---------- zdjęcia ---------- */
+.ph{position:relative;overflow:hidden;background:var(--biel-cien)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph.brak{background:repeating-linear-gradient(45deg,#e2eae6 0 10px,#dae3de 10px 20px)}
+.ph.brak:after{content:attr(data-opis);position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;text-align:center;padding:14px;
+  font:600 .72rem/1.45 var(--tekst);letter-spacing:.08em;text-transform:uppercase;color:#76837c}
+.ph.brak img{display:none}
+.para{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4.5vw,56px);align-items:start}
+.para .ph{aspect-ratio:3/2}
+.ph-pion{aspect-ratio:4/5}
+.podpis{font-size:.83rem;color:var(--atrament-jasny);margin-top:10px}
+.trojka{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,32px)}
+.trojka .ph{aspect-ratio:3/2}
+.etap{margin:0}
+.etap figcaption{margin-top:11px;font-size:.9rem;color:var(--atrament-jasny)}
+.etap figcaption b{display:block;font-family:var(--display);font-size:1.02rem;
+  color:var(--atrament);margin-bottom:4px}
+.portrety{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+/* ---------- dane kontaktowe ---------- */
+.dane{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:30px}
+.dane div{border-top:2px solid var(--atrament);padding-top:13px}
+.dane dt{font:600 .64rem/1 var(--tekst);letter-spacing:.19em;text-transform:uppercase;
+  color:var(--atrament-jasny);margin-bottom:8px}
+.dane dd{margin:0;font-size:1.03rem}
+.dane a{text-decoration:none;border-bottom:2px solid var(--zielen-jasna)}
+.dane-noc{grid-template-columns:1fr 1fr;margin-top:26px}
+.drobne{font-size:.85rem;color:var(--atrament-jasny)}
+.dopisek{margin-top:26px;color:var(--atrament-jasny);font-size:.95rem;max-width:64ch}
+
+/* ---------- stopka ---------- */
+.stopka{border-top:1px solid var(--linia);padding:24px 0;font-size:.86rem;
+  color:var(--atrament-jasny)}
+.stopka a{text-decoration:none;border-bottom:1px solid var(--linia)}
+
+@media(max-width:1000px){
+  .karty{grid-template-columns:repeat(2,1fr)}
+  .dane{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .nav-desktop{display:none}
+  .tel{margin-left:auto}
+  .menu-tel{display:flex;align-items:center;height:44px;gap:18px;overflow-x:auto;
+    font-size:.86rem;border-top:1px solid var(--linia)}
+  .menu-tel a{text-decoration:none;color:var(--atrament-jasny);white-space:nowrap}
+  [id]{scroll-margin-top:140px}
+  .para,.trojka,.lista-pilne,.dane-noc{grid-template-columns:1fr}
+  .karty{grid-template-columns:1fr;max-width:420px}
+  .karta-tresc > p:not(.stopka){min-height:0}
+  .pas-foto .ph{aspect-ratio:16/9}
+  .lista-pilne li{padding-block:12px}
+  .stan-rzad{padding:11px 0}
+}
+@media(max-width:560px){
+  .dane{grid-template-columns:1fr}
+  .portrety{grid-template-columns:1fr;max-width:300px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
