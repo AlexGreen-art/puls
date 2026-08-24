@@ -24,6 +24,7 @@ a{color:inherit}
 h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.015em}
 :focus-visible{outline:3px solid var(--zielen);outline-offset:3px}
 [id]{scroll-margin-top:115px}
+#gora{scroll-margin-top:67px}
 
 .owijka{width:min(1160px,100% - 44px);margin-inline:auto}
 .waska{width:min(1160px,100% - 44px);margin-inline:auto}
@@ -48,7 +49,8 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.01
 /* ---------- pasek stanu, sterowany zegarem ---------- */
 .stan{background:var(--zielen);color:#eaf3ee;border-bottom:1px solid var(--linia)}
 .stan.zamkniete{background:var(--atrament)}
-.stan-rzad{display:flex;align-items:baseline;gap:8px 26px;flex-wrap:wrap;padding:13px 0}
+.stan-rzad{display:flex;align-items:baseline;gap:8px 26px;flex-wrap:wrap;
+  min-height:54px;padding:13px 0}
 .stan-glowny{margin:0;font-weight:600;font-size:.98rem}
 .stan-glowny b{font-family:var(--display);font-weight:700}
 .stan-drugi{margin:0;font-size:.92rem;color:#b9cfc4}
@@ -58,9 +60,22 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.01
   margin-right:9px;vertical-align:middle}
 .stan.zamkniete .kropka{background:#d98c6a}
 
+/* ---------- hero: tekst i zdjęcie obok siebie ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(0,1fr);
+  align-items:stretch;border-bottom:1px solid var(--linia);
+  min-height:calc(100vh - 121px)}
+.hero-tresc{display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(40px,4.8vw,56px);
+  padding-left:max(22px,calc((100vw - 1160px) / 2));
+  padding-right:clamp(22px,4vw,56px)}
+.hero h1{font-size:clamp(1.75rem,3.4vw,2.65rem);line-height:1.14;max-width:22ch;
+  text-wrap:balance;margin-bottom:22px}
+.hero-foto{position:relative;background:var(--biel-cien)}
+.hero-foto .ph{position:absolute;inset:0}
+.hero-foto img{width:100%;height:100%;object-fit:cover}
+
 /* ---------- bloki ---------- */
 .blok{padding:clamp(52px,6.5vw,88px) 0}
-.blok-hero{padding:clamp(50px,6vw,86px) 0 clamp(44px,5vw,70px)}
 .blok-cien{background:var(--biel-cien)}
 .blok-ciemny{background:var(--atrament);color:var(--biel)}
 .blok-alarm{background:var(--alarm-tlo);border-block:1px solid #f0d8ce}
@@ -73,8 +88,7 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.01
 .blok-ciemny .wstep{color:#9fb0a7}
 
 /* ---------- hero ---------- */
-.blok-hero h1{font-size:clamp(1.8rem,3.5vw,2.75rem);line-height:1.14;max-width:27ch;
-  text-wrap:balance}
+
 .lead{color:var(--atrament-jasny);max-width:58ch;margin:22px 0 0;font-size:1.06rem}
 .przyciski{display:flex;gap:11px;flex-wrap:wrap;margin-top:30px}
 .btn{display:inline-block;text-decoration:none;font-weight:600;padding:13px 22px;
@@ -84,8 +98,6 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.01
 .btn-obrys{border:1.5px solid var(--linia);color:var(--atrament)}
 .btn-obrys:hover{background:var(--biel-cien)}
 
-.pas-foto{margin:0}
-.pas-foto .ph{aspect-ratio:32/11}
 
 /* ---------- lista pilnych objawów ---------- */
 .lista-pilne{list-style:none;padding:0;margin:28px 0 0;
@@ -193,10 +205,13 @@ h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.01
     font-size:.86rem;border-top:1px solid var(--linia)}
   .menu-tel a{text-decoration:none;color:var(--atrament-jasny);white-space:nowrap}
   [id]{scroll-margin-top:140px}
+  #gora{scroll-margin-top:112px}
   .para,.trojka,.lista-pilne,.dane-noc{grid-template-columns:1fr}
   .karty{grid-template-columns:1fr;max-width:420px}
   .karta-tresc > p:not(.stopka){min-height:0}
-  .pas-foto .ph{aspect-ratio:16/9}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-tresc{padding:clamp(34px,7vw,50px) 22px}
+  .hero-foto{aspect-ratio:16/10}
   .lista-pilne li{padding-block:12px}
   .stan-rzad{padding:11px 0}
 }
