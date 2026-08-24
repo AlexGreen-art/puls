@@ -19,6 +19,28 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styl.css?v=6">
+
+<style id="hero-580x600">
+/* Zdjęcie hero przygotowane jako dokładnie 580 × 600 px. */
+@media (min-width: 1001px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 580px !important;
+    min-height: 600px !important;
+  }
+  .hero-foto {
+    width: 580px !important;
+    height: 600px !important;
+    aspect-ratio: auto !important;
+  }
+  .hero-foto img {
+    width: 580px !important;
+    height: 600px !important;
+    object-fit: fill !important;
+    object-position: center !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
